@@ -13,6 +13,7 @@ newGridBtn.addEventListener("click", (e) => {
   
   const previousGrid = document.querySelectorAll(".gridRow").forEach(element => element.remove());
   constructGrid(gridCount);
+  alphaLevel = 100;
 });
 
 function constructGrid(gridDimension) {
