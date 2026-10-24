@@ -1,5 +1,7 @@
 constructGrid(16);
 
+let alphaLevel = 100;
+
 const newGridBtn = document.querySelector(".newGrid");
 
 newGridBtn.addEventListener("click", (e) => {
@@ -23,10 +25,22 @@ function constructGrid(gridDimension) {
       console.log(`Creating row ${i+1} - Cell ${j+1}`);
       let gridCell = document.createElement("div");
       gridCell.classList.add("gridCell");
-      gridCell.addEventListener("mouseenter", () => gridCell.style.backgroundColor = "black");
+      gridCell.addEventListener("mouseenter", () => {
+        const red = Math.floor((Math.random() * (255 - 1)) + 1);
+        const green = Math.floor((Math.random() * (255 - 1)) + 1);
+        const blue = Math.floor((Math.random() * (255 - 1)) + 1);
+        console.log(`rgba(${red}, ${green}, ${blue}, ${alphaLevel/100})`)
+        gridCell.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${alphaLevel/100})`;
+
+        if (alphaLevel > 0) {
+          alphaLevel -= 10;
+        }
+
+      });
 
       gridRow.append(gridCell);
     }
     document.body.append(gridRow);
   }
 }
+
